@@ -9,7 +9,7 @@ let db,
 
 MongoClient.connect(dbConnectionString, { useUnifiedTopology: true })
     .then(client => {
-        console.log(`Connected to ${dbName}`)
+        console.log(`Connected to ${dbName}.`)
         db = client.db(dbName)
     })
     .catch(err =>{
@@ -43,6 +43,20 @@ app.get('/', (req, res) => {
     db.collection('healthCollection').find().toArray()
     .then(data => {
         res.render('index.ejs', {bigEntryDataArray: data})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
+app.delete('deleteEntry', (req, res) => {
+    db.collection('healthCollection').deleteOne({ entry: req.body.deletedEntry})
+    .then(result => {
+        console.log(`Deleted ${req.body.deletedEntry}.`)
+        res.json('Deleted it.')
+    })
+    .catch(err => {
+        console.log(err)
     })
 })
 

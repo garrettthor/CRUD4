@@ -5,64 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Health Tracker</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>How are you feeling today?</h1>
+    <header>
+        <h1>Personal Health Tracking</h1>
+        <span>Profile</span>
+        <span>Logout</span>
+    </header>
 
+    <section>
+        <h2>How are you feeling today?</h2>
+
+        <form action="/createEntry" method="POST">
+            <div>
+                <h3>Anxiety:</h3>
+                    <select type="text" name="entryAnxItem">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+            </div>
+            
+            <div>
+                <h3>Depression:</h3>
+                    <select type="text" name="entryDepItem">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+            </div>
+            
+
+            <h3>Comments:</h3>
+            <textarea placeholder="Please add any notes here" name="entryText" width="200px"></textarea>
+
+            <p><input type="date" name="entryDate" required value =''></p>
+            
+            <p><input type="submit" name="submit" value="Thank you for sharing!"></p>
+            
+        </form>
+
+    </section>
     
-    
-    <form action="/createEntry" method="POST">
-        <h3>Anxiety:</h3>
-        <select type="text" name="entryAnxItem">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        
-        <h3>Depression:</h3>
-        <select type="text" name="entryDepItem">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-
-        <h3>Comments:</h3>
-        <textarea placeholder="Please add any notes here :)" name="entryText"></textarea>
-
-        <p>
-            <input type="date" name="entryDate">
-        </p>
-        
-
-        <p>
-            <input type="submit" name="submit" value="Thank you for sharing :)"> 
-        </p>
-        
-
-    </form>
 
     <h2>Previous Entries</h2>
 
     <ul>
-        <%  %> 
+        
         <% let sortedEntriesByDate = bigEntryDataArray.sort((a,b) => b.dateEntry - a.dateEntry) %>
-        <% console.log(sortedEntriesByDate[0].dateEntry) %>
-        <% console.log(sortedEntriesByDate[1].dateEntry) %>
-        <% console.log(sortedEntriesByDate[2].dateEntry) %>
+        <% //console.log(sortedEntriesByDate) %>
+        <% //console.log(sortedEntriesByDate[1].dateEntry) %>
+        <% //console.log(sortedEntriesByDate[2].dateEntry) %>
         <% for(i=0; i<sortedEntriesByDate.length; i++) { %>
         
             <li><span>Date: <%=sortedEntriesByDate[i].dateEntry %></span>
@@ -70,10 +80,13 @@
                     <li><span>Anxiety: <%=sortedEntriesByDate[i].anxEntry%></span></li>
                     <li><span>Depression: <%=sortedEntriesByDate[i].depEntry%></span></li>
                     <li><span>Notes: <%=sortedEntriesByDate[i].textEntry%></span></li>
+                    <button class="del">Delete Entry</button>
                 </ul>
             </li>
         <% } %> 
     </ul>
     
+
+    <script src="js/main.js"></script>
 </body>
 </html>

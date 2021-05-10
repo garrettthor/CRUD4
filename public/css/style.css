@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', arial, sans-serif;
+}
+
+header {
+    background-color: rgb(125, 151, 216);
+}
+
+header h1 {
+    text-align: center;
+    padding-top: .75em;
+}
+
+form {
+    border: 3px solid rgb(125, 151, 216);
+    padding-left: 2em;
+}
+textarea {
+    width: 350px;
+    height: 100px;
+}
+
+.del {
+    color: red;
+}
+
+.del:hover {
+    cursor: pointer;
+}
