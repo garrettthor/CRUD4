@@ -5,7 +5,7 @@ Array.from(deleteBtn).forEach((el)=> {
 })
 
 async function deleteEvent() {
-    alert('fuckin fuck')
+    alert('Del btn clicked...')
     const entryToDel = this.parentNode.childNodes[1].innerText
     alert(entryToDel)
     try {
